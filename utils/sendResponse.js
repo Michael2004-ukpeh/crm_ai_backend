@@ -13,8 +13,6 @@ module.exports = function (
     result: options.result ? data.length : undefined,
     message: options.message ? options.message : undefined,
     token: options.token ? options.token : undefined,
-    data: {
-      data,
-    },
+    data,
   });
 };

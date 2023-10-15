@@ -36,7 +36,7 @@ const limiter = rateLimit({
 });
 
 // Enabling CORS
-app.use(cors());
+app.use(cors({ origin: true }));
 
 // Limit request from the same API
 // app.use('/api', limiter);
