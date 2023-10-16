@@ -65,6 +65,12 @@ const registrationSchema = new mongoose.Schema(
   }
 );
 
+registrationSchema.pre('find', async function (next) {
+  this.populate('event');
+
+  next();
+});
+
 registrationSchema.post('save', async function () {
   const eventId = this.event;
   const event = await Event.findById(eventId);
