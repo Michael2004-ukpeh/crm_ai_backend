@@ -64,6 +64,7 @@ const registrationSchema = new mongoose.Schema(
 registrationSchema.post('save', async function () {
   const eventId = this.event;
   const event = await Event.findById(eventId);
+  console.log(event.name);
   const eventOrganizer = await User.findById(event.createdBy);
 
   const eventDate = new Date(event.date);
