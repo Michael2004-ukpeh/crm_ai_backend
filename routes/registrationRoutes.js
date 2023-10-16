@@ -7,12 +7,13 @@ const {
 } = require('./../controllers/registrationController');
 const { protect } = require('./../controllers/authController');
 const express = require('express');
+const { parseBoolean } = require('../middlewares/registrationMiddleware');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(protect, getAllRegistrations)
+  .get(protect, parseBoolean, getAllRegistrations)
   .post(protect, createRegistration);
 router
   .route('/:id')
