@@ -3,9 +3,16 @@ const AppError = require('../utils/appError');
 
 exports.parseBoolean = catchAsync(async (req, res, next) => {
   const { isCancelled } = req.query;
-  const formattedIsCancelled = isCancelled === 'true' ? true : false;
-  console.log(formattedIsCancelled);
-  req.query.isCancelled = formattedIsCancelled;
 
+  if (isCancelled === 'true') {
+    let formattedIsCancelled = true;
+    req.query.isCancelled = formattedIsCancelled;
+  } else if (isCancelled === 'false') {
+    let formattedIsCancelled = false;
+    req.query.isCancelled = formattedIsCancelled;
+  } else {
+    delete req.query.isCancelled;
+  }
+  console.log(req.query);
   next();
 });
