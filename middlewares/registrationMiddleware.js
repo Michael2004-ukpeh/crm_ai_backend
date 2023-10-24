@@ -13,6 +13,6 @@ exports.parseBoolean = catchAsync(async (req, res, next) => {
   } else {
     delete req.query.isCancelled;
   }
-  console.log(req.query);
+
   next();
 });

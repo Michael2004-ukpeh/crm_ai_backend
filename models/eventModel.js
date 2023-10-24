@@ -23,6 +23,10 @@ const eventSchema = new mongoose.Schema(
       type: Date,
       required: [true, 'Event date and time is required'],
     },
+    isCancelled: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     strict: true,

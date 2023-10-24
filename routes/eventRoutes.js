@@ -9,10 +9,11 @@ const {
 } = require('./../controllers/eventController');
 const { parseDate } = require('./../middlewares/eventMiddleware');
 const { protect } = require('./../controllers/authController');
+const { parseBoolean } = require('../middlewares/registrationMiddleware');
 
 router
   .route('/')
-  .get(protect, getAllEvents)
+  .get(protect, parseBoolean, getAllEvents)
   .post(protect, parseDate, createEvent);
 router
   .route('/:id')
